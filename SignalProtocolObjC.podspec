@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SignalProtocolObjC"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "Unofficial Objective-C wrapper for libsignal-protocol-c"
 
   s.description  = <<-DESC
@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.source       = { :git => "https://github.com/ChatSecure/SignalProtocol-ObjC.git", 
+  s.source       = { :git => "https://github.com/monal-im/SignalProtocol-ObjC.git", 
   					         :tag => s.version.to_s}
 
   s.source_files  = ["Classes/**/*.{h,m}"]
   s.private_header_files = ["Classes/**/*_Internal.h", "Classes/Models/SignalMessage.h"]
-  s.dependency 'SignalProtocolC', '~> 2.3.2'
+  s.dependency 'SignalProtocolC', '~> 2.3.3'
 end
