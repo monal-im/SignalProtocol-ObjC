@@ -36,4 +36,11 @@
     return self;
 }
 
+- (void) dealloc {
+    if (_signal_message ) {
+        SIGNAL_UNREF(_signal_message);
+    }
+    _signal_message = NULL;
+}
+
 @end

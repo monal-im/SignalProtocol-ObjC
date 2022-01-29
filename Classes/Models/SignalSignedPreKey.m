@@ -62,6 +62,10 @@
     if (buffer && result >= 0) {
         data = [NSData dataWithBytes:signal_buffer_data(buffer) length:signal_buffer_len(buffer)];
     }
+    if (buffer) {
+        signal_buffer_free(buffer);
+        buffer = NULL;
+    }
     return data;
 }
 

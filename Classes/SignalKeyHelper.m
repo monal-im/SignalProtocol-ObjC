@@ -47,17 +47,24 @@
 
 - (NSArray<SignalPreKey*>*)generatePreKeysWithStartingPreKeyId:(NSUInteger)startingPreKeyId
                                                          count:(NSUInteger)count {
-    signal_protocol_key_helper_pre_key_list_node *head = NULL;
-    int result = signal_protocol_key_helper_generate_pre_keys(&head, (unsigned int)startingPreKeyId, (unsigned int)count, _context.context);
-    if (!head || result < 0) {
+    signal_protocol_key_helper_pre_key_list_node *list = NULL;
+    int result = signal_protocol_key_helper_generate_pre_keys(&list, (unsigned int)startingPreKeyId, (unsigned int)count, _context.context);
+    if (!list || result < 0) {
+        if (list) {
+            signal_protocol_key_helper_key_list_free(list);
+        }
         return @[];
     }
     NSMutableArray<SignalPreKey*> *keys = [NSMutableArray array];
+    signal_protocol_key_helper_pre_key_list_node *head = list;
     while (head) {
         session_pre_key *pre_key = signal_protocol_key_helper_key_list_element(head);
         SignalPreKey *preKey = [[SignalPreKey alloc] initWithPreKey:pre_key];
         [keys addObject:preKey];
         head = signal_protocol_key_helper_key_list_next(head);
+    }
+    if (list) {
+        signal_protocol_key_helper_key_list_free(list);
     }
     return keys;
 }

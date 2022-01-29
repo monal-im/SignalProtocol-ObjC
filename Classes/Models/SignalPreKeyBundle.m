@@ -116,7 +116,7 @@
         ec_public_key *identity_key = session_pre_key_bundle_get_identity_key(bundle);
         signal_buffer *signature = session_pre_key_bundle_get_signed_pre_key_signature(bundle);
         
-        signal_buffer *serialized_signed_pre_key = 0;
+        signal_buffer *serialized_signed_pre_key = NULL;
         result = ec_public_key_serialize(&serialized_signed_pre_key, signed_pre_key);
         if(result < 0) {
             return handleResult(result);

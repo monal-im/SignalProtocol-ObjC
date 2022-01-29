@@ -41,6 +41,13 @@
     return self;
 }
 
+- (void) dealloc {
+    if (_cipher) {
+        session_cipher_free(_cipher);
+    }
+    _cipher = NULL;
+}
+
 - (nullable SignalCiphertext*)encryptData:(NSData*)data error:(NSError**)error {
     NSParameterAssert(data);
     if (!data) {

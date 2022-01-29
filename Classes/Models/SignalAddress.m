@@ -23,7 +23,7 @@
         return nil;
     }
     if (self = [super init]) {
-        _name = [name copy];
+        _name = name;
         _deviceId = deviceId;
         _address = malloc(sizeof(signal_protocol_address));
         _address->name = [self.name UTF8String];
