@@ -63,9 +63,6 @@
         [keys addObject:preKey];
         head = signal_protocol_key_helper_key_list_next(head);
     }
-    if (list) {
-        signal_protocol_key_helper_key_list_free(list);
-    }
     return keys;
 }
 
