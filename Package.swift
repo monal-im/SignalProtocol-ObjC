@@ -34,6 +34,16 @@ let package = Package(
                 .headerSearchPath("Utility"),
             ],
         ),
+        .testTarget(
+            name: "SignalProtocolObjCTests",
+            dependencies: ["SignalProtocolObjC"],
+            path: "Testing/SignalProtocolObjCTests",
+        ),
+        .testTarget(
+            name: "SignalProtocolSwiftTests",
+            dependencies: ["SignalProtocolObjC"],
+            path: "Testing/SignalProtocolSwiftTests",
+        ),
     ],
     swiftLanguageModes: [.v6],
 )
